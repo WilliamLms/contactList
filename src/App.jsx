@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useState } from "react";
+import ContactList from "./components/ContactList";
+import SelectedContact from "./components/SelectedContact";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [selectedContactId, setSelectedContactId] = useState(null);
 
   return (
     <>
-  
+      {selectedContactId ? (
+        <SelectedContact 
+          selectedContactId={selectedContactId} 
+          setSelectedContactId={setSelectedContactId} 
+        />
+      ) : (
+        <ContactList setSelectedContactId={setSelectedContactId} />
+      )}
     </>
-  )
+  );
 }
-
-export default App
